@@ -20,6 +20,7 @@
 # This create a dedicated user and setup all the package
 # and optionnaly a VPN
 #
+sudo su
 
 function help {
   echo "Usage:" >&2
