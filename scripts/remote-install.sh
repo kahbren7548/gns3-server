@@ -20,6 +20,9 @@
 # This create a dedicated user and setup all the package
 # and optionnaly a VPN
 #
+
+ip4=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+
 sudo su
 
 function help {
@@ -303,7 +306,7 @@ log "Setup VPN"
 
 log "Change GNS3 to listen on VPN interface"
 
-sed -i 's/host = 0.0.0.0/host = 172.16.253.1/' /etc/gns3/gns3_server.conf
+sed -i 's/host = 0.0.0.0/host = $ip4/' /etc/gns3/gns3_server.conf
 
 log "Install packages for OpenVPN"
 
